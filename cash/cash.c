@@ -41,9 +41,9 @@ int get_cents(void)
     int cents;
     do
     {
-        cents= get_int("Amount of change: ");
+        cents = get_int("Amount of change due: ");
     }
-    while(cents<0)
+    while(cents < 0);
 
     return cents;
 }
