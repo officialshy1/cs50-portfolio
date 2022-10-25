@@ -37,4 +37,7 @@ int compute_score(string word)
     // Get score for characters
     int len = strlen(word);
     for (int i = 0; i < len; i++)
+    {
+        
+    }
 }
