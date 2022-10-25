@@ -32,5 +32,9 @@ int main(void)
 int compute_score(string word)
 {
     // TODO: Compute and return score for string
-    
+    // First Return Score
+    int score = 0;
+    // Get score for characters
+    int len = strlen(word);
+    for (int i = 0; i < len; i++)
 }
