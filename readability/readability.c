@@ -12,6 +12,9 @@ string text = get_string("Text: ");
 int letters = 0;
 for(int i = 0; i < strlen(text); i++)
 {
-    if(())
+    if((text[i] >= 'a' && text [i]<= 'z')||
+    (text [i] >= 'A' && text[i] <= 'Z'))
+    letters++;
 }
+//
 }
