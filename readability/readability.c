@@ -16,5 +16,8 @@ for(int i = 0; i < strlen(text); i++)
     (text [i] >= 'A' && text[i] <= 'Z'))
     letters++;
 }
-//
+// words with spaces
+int words = 1;
+for(int i = 0; i < strlen(text); i++)
+
 }
