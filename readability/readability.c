@@ -6,5 +6,5 @@
 int main(void)
 {
 // ask user for response
-string
+string text
 }
