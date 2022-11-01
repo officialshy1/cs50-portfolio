@@ -6,5 +6,7 @@
 int main(void)
 {
 // ask user for response
-string text
+string text = get_string("Text: ");
+
+//
 }
