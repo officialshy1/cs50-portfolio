@@ -8,5 +8,10 @@ int main(void)
 // ask user for response
 string text = get_string("Text: ");
 
-//
+//count letters in text
+int letters = 0;
+for(int i = 0; i < strlen(text); i++)
+{
+    if(())
+}
 }
