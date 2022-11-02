@@ -40,5 +40,13 @@ if(index < 1)
     printf("Before Grade 1\n;)
     return 0;
 }
-el
+else if (index >= 16)
+{
+    printf("Grade 16+\n");
+    return 0;
+}
+else
+{
+    printf("Grade %i\n", index)
+}
 }
