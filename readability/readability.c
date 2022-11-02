@@ -17,6 +17,6 @@ for(int i = 0; i < strlen(text); i++)
     (text[i] >= 'A' && text[i] <= 'Z'))
     letters++;
 }
-printf("%i letters", letters);
+printf("%i letters\n", letters);
 }
 
