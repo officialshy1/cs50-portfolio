@@ -36,4 +36,9 @@ float calculation = (0.0588 * letters/words *100) -
 (0.296 * sentences/words * 100) - 15.8;
 int index = round(calculation);
 if(index < 1)
+{
+    printf("Before Grade 1\n;)
+    return 0;
+}
+el
 }
