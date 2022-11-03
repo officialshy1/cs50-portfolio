@@ -18,5 +18,6 @@ int main(int argc, string argv[])
     string key = argv[i];
 
     //input is digit
+    for (int i )
 
 }
