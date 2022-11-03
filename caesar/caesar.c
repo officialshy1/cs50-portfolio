@@ -12,7 +12,7 @@ int main(int argc, string argv[])
         printf("Usage: ./caesar key\n");
         return 1;
     }
-    else printf("Success!\n");
+    
 
     //key
     string key = argv[1];
