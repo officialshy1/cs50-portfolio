@@ -18,9 +18,9 @@ int main(int argc, string argv[])
     string key = argv[1];
 
     //input is digit
-    for (int i = 0; i < strlen(argv[i]); i++)
+    for (int i = 0; i < strlen(argv[1]); i++)
     {
-        if(!isdigit(argv[i][i]))
+        if(!isdigit(argv[1][i]))
         {
             printf("usage: ./caesar key\n");
             return 1;
