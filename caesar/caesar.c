@@ -9,13 +9,13 @@ int main(int argc, string argv[])
     // one command line argument
     if(argc !=2)
     {
-        printf("usage: ./caesar key\n");
+        printf("Usage: ./caesar key\n");
         return 1;
     }
     else printf("Success!\n");
 
     //key
-    string key = argv[i];
+    string key = argv[1];
 
     //input is digit
     for (int i = 0; i < strlen(argv[i]); i++)
