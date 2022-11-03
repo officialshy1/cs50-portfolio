@@ -12,7 +12,7 @@ int main(int argc, string argv[])
         printf("Usage: ./caesar key\n");
         return 1;
     }
-    
+
 
     //key
     string key = argv[1];
@@ -33,6 +33,7 @@ int main(int argc, string argv[])
 
           //key to integer
           int k = atoi(key);
+          printf("ciphertext: ");
 
           //ciphertext
           for(int i = 0; i < strlen(plaintext); i++)
