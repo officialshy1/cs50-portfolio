@@ -1,11 +1,11 @@
 sort1 uses: Bubble
 
-How do you know?: 
+How do you know?: it was the fastest time I recorded on sorted list.
 
 sort2 uses: Merge
 
-How do you know?: TODO
+How do you know?: it was the fastest time i recorded on random and unsirted list.
 
 sort3 uses: selection
 
-How do you know?: TODO
+How do you know?: it ran the close to the same time as sorted and unsorted.
