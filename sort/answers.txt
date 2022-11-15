@@ -4,7 +4,7 @@ How do you know?: it was the fastest time I recorded on sorted list.
 
 sort2 uses: Merge
 
-How do you know?: it was the fastest time i recorded on random and unsirted list.
+How do you know?: it was the fastest time i recorded on random and unsorted list.
 
 sort3 uses: selection
 
