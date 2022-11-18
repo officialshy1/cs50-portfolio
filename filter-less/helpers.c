@@ -81,8 +81,12 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             int temPred = image[i][j].rgbtBlue;
 
             image[i][j].rgbtRed = image[i][width - j - 1].rgbtRed;
-            image[i][j].rgbtRed = image[i][width - j - 1].rgbtRed;
-            image[i][j].rgbtRed = image[i][width - j - 1].rgbtRed;
+            image[i][j].rgbtGreen = image[i][width - j - 1].rgbtGreen;
+            image[i][j].rgbtBlue = image[i][width - j - 1].rgbtBlue;
+
+            image[i][width - j - 1].rgbtRed = temPred;
+            image[i][width - j - 1].rgbtGreen = temPgreen;
+            image[i][width - j - 1].rgbtBlue = temPblue;
 
         }
     }
@@ -92,5 +96,36 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+    // temporary image for blurred
+    RGBTRIPLE temp[height][width];
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            int total_Red, total_Blue, total_Green;
+            total_Red = total_Blue = total_Green = 0;
+            float counter = 0.00;
+
+            // get N. Pexels
+            for (int x = -1; x < 2; x++)
+            {
+                for (int y = -1; y < 2; y++)
+                {
+                    int currentX = i + x;
+                    int currentY = j + y;
+
+                    //check for those pexels
+                    if (currentX < 0 || currentX > (height - 1) || currentY < 0 || currentY > (width - 1 ))
+                    {
+                        continue;
+                    }
+                    // image value
+                    total_Red += image[currentX][currentY].rgbtRed;
+                    total_Green += image[currentX][currentY].rgbt.Green;
+                    total_Blue += image[currentX][currentY].rgbt.Blue;
+                }
+            }
+        }
+    }
     return;
 }
