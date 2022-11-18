@@ -67,51 +67,53 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    // temporary image for blurred
     RGBTRIPLE temp[height][width];
+
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
         {
-            int total_Red, total_Blue, total_Green;
-            total_Red = total_Blue = total_Green = 0;
-            float counter = 0.00;
+            float sumBlue = 0;
+            float sumGreen = 0;
+            float sumRed = 0;
+            float counter = 0;
 
-            // get N. Pexels
-            for (int x = -1; x < 2; x++)
+            for (int r = -1; r < 2; r++)
             {
-                for (int y = -1; y < 2; y++)
+                for (int c = -1; c < 2; c++)
                 {
-                    int currentX = i + x;
-                    int currentY = j + y;
-
-                    //check for those pexels
-                    if (currentX < 0 || currentX > (height - 1) || currentY < 0 || currentY > (width - 1 ))
+                    if (i + r < 0 || i + r > height - 1)
                     {
                         continue;
                     }
-                    // image value
-                    total_Red += image[currentX][currentY].rgbtRed;
-                    total_Green += image[currentX][currentY].rgbt.Green;
-                    total_Blue += image[currentX][currentY].rgbt.Blue;
+
+                    if (j + c < 0 || j + c > width - 1)
+                    {
+                        continue;
+                    }
+
+                    sumBlue += image[i + r][j + c].rgbtBlue;
+                    sumGreen += image[i + r][j + c].rgbtGreen;
+                    sumRed += image[i + r][j + c].rgbtRed;
                     counter++;
                 }
-                //average of pexels
-                temp[i][j].rgbtRed = round (total_Red / counter);
-                temp[i][j].rgbtGreen = round (total_Green / counter);
-                temp[i][j].rgbtBlue = round (total_Blue / counter);
             }
+
+            temp[i][j].rgbtBlue = round(sumBlue / counter);
+            temp[i][j].rgbtGreen = round(sumGreen / counter);
+            temp[i][j].rgbtRed = round(sumRed / counter);
         }
     }
-    // blur image to original
+
     for (int i = 0; i < height; i++)
     {
-        for ( int j = 0; j < width; j++)
+        for (int j = 0; j < width; j++)
         {
-            image[i][j].rgbtRed = temp[i][j].rgbtRed;
-            image[i][j].rgbtGreen = temp[i][j].rgbtGreen;
             image[i][j].rgbtBlue = temp[i][j].rgbtBlue;
+            image[i][j].rgbtGreen = temp[i][j].rgbtGreen;
+            image[i][j].rgbtRed = temp[i][j].rgbtRed;
         }
+
     }
     return;
 }
