@@ -39,20 +39,26 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     for (int i = 0; i < height; i++)
     {
-        for (int j = 0; j < (width/2); j++)
+        if (width % 2 == 0)
         {
-            int temPred = image[i][j].rgbtRed;
-            int temPred = image[i][j].rgbtGreen;
-            int temPred = image[i][j].rgbtBlue;
+            for (int j = 0; j < width / 2; j++)
+            {
+                RGBTRIPLE temp[height][width];
+                temp[i][j] = image[i][j];
+                image[i][j] = image[i][width - (j + 1)];
+                image[i][width - (j + 1)] = temp[i][j];
+            }
+        }
 
-            image[i][j].rgbtRed = image[i][width - j - 1].rgbtRed;
-            image[i][j].rgbtGreen = image[i][width - j - 1].rgbtGreen;
-            image[i][j].rgbtBlue = image[i][width - j - 1].rgbtBlue;
-
-            image[i][width - j - 1].rgbtRed = temPred;
-            image[i][width - j - 1].rgbtGreen = temPgreen;
-            image[i][width - j - 1].rgbtBlue = temPblue;
-
+        else if (width % 2 != 0)
+        {
+            for (int j = 0; j < (width - 1) / 2; j++)
+            {
+                RGBTRIPLE temp[height][width];
+                temp[i][j] = image[i][j];
+                image[i][j] = image[i][width - (j + 1)];
+                image[i][width - (j + 1)] = temp[i][j];
+            }
         }
     }
     return;
