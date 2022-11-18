@@ -50,10 +50,17 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             }
         }
         else if (width % 2 != 0)
-        (
-            for (int j = 0; j < (width - 1) / 2; j++)
-            
-        )
+         {
+             for (int j = 0; j < (width - 1) / 2; j++)
+             {
+                RGBTRIPLE temp[height][width];
+                temp[i][j] = image[i][j];
+                image[i][j] = image[i][width - (j + 1)];
+                image[i][width - (j + 1)] = temp[i][j];
+             }
+         }
+
+
     }
     return;
 }
