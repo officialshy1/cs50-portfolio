@@ -123,8 +123,21 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     total_Red += image[currentX][currentY].rgbtRed;
                     total_Green += image[currentX][currentY].rgbt.Green;
                     total_Blue += image[currentX][currentY].rgbt.Blue;
+                    counter++;
                 }
+                //average of pexels
+                temp[i][j].rgbtRed = round (total_Red / counter);
+                temp[i][j].rgbtGreen = round (total_Green / counter);
+                temp[i][j].rgbtBlue = round (total_Blue / counter);
             }
+        }
+    }
+    // blur image to original
+    for (int i = 0; i < height; i++)
+    {
+        for ( int j = 0; j < width; j++)
+        {
+            image[i][j].rgbtRed = temp[i][j]
         }
     }
     return;
