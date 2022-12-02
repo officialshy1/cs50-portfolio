@@ -46,9 +46,6 @@ person *create_family(int generations)
         return NULL;
     }
 
-    // Generation with parent data
-    if (generations > 1)
-
     // If there are still generations left to create
     if (generations > 1)
     {
