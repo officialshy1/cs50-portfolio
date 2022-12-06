@@ -114,5 +114,24 @@ unsigned int size(void)
 bool unload(void)
 {
     // TODO
-    return false;
+    //iterate through buckets
+    for (int i =0; i < N; i++)
+    {
+        //set cursor to start of linked list
+        node *cursor = table[i];
+
+        //if cursor not null then free memory
+        while(cursor != NULL)
+        {
+            //TEMP CREATE
+            node *tmp = cursor;
+            //move cursor next node
+            cursor = cursor->next;
+            //free temp
+            free(tmp);
+
+        }
+    }
+
+    return true;
 }
