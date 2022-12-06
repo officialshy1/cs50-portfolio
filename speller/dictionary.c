@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <strings.h>
 #include "dictionary.h"
 
 // Represents a node in a hash table
@@ -29,7 +30,18 @@ unsigned int hash_variable;
 bool check(const char *word)
 {
     // TODO
-    
+    hash_value = hash(word);
+    node *cursor = table[hash_value];
+
+    //going through linked list
+    while (cursor != 0)
+    {
+        if(strcasecmp(word, cursor->word) == 0)
+        {
+            return true;
+        }
+        cursor = cursor->next;
+    }
     return false;
 }
 
