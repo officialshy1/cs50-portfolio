@@ -29,6 +29,7 @@ unsigned int hash_variable;
 bool check(const char *word)
 {
     // TODO
+    
     return false;
 }
 
