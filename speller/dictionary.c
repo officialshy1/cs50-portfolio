@@ -131,17 +131,19 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
-    for (int i = 0; i < HASHTABLE_SIZE; i++)
-{
-node *head = hashtable[i];
-node *cursor = head;
-// freeing linked lists
-while (cursor != NULL)
-{
-node *temp = cursor;
-cursor = cursor->next;
-free(temp);
-}
-}
-return true;
+for (int i = 0; i < N ; i ++)
+    {
+        node *head = table[i];
+        node *cursor = head;
+        node *tmp = head;
+
+        while (cursor != NULL)
+        {
+            cursor = cursor -> next;
+            free(tmp);
+            tmp = cursor;
+        }
+
+    }
+    return true;
 }
