@@ -131,19 +131,22 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
-for (int i = 0; i < N ; i ++)
+//go through buckets
+for(int i =0; i < N, i++)
+{
+    //set cursor to start of linked list
+    node *cursor = table[i];
+
+    //cursor not null free memroy
+    while (cursor != NULL)
     {
-        node *head = table[i];
-        node *cursor = head;
-        node *tmp = head;
-
-        while (cursor != NULL)
-        {
-            cursor = cursor -> next;
-            free(tmp);
-            tmp = cursor;
-        }
-
+        //CREATE TEMP
+        node *tmp = cursor;
+        //move cursor to next node
+        cursor = cursor->next;
+        //free temp
+        free(tmp);
     }
-    return true;
+}
+return true;
 }
