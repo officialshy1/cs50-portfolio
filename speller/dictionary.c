@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <strings.h>
-1023
 #include "dictionary.h"
 
 // Represents a node in a hash table
