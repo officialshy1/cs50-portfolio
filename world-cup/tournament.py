@@ -29,7 +29,7 @@ def main():
         winner = simulate_tournament(teams)
     if winner in counts:
         counts[winner] += 1
-        else:
+    else:
         counts[winner] = 1
 
     # Print each team's chances of winning, according to simulation
