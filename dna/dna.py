@@ -22,11 +22,11 @@ def main():
 
 
     # TODO: Find longest match of each STR in DNA sequence
-    STR = list(dna_database[0].keys())[1:]
-    STR_match ={}
-    for i in range(len(dna_database)):
-        # print(dna_database)
-        STR_match[STR[i]] = longest_match(sequence,STR[i])
+    subsequence = list(database[0].keys())[1:]
+
+    results = {}
+    for subsequence in subsequences:
+        result[subsequence]
 
     # TODO: Check database for matching profiles
     for i in range(len(dna_database)):
