@@ -26,7 +26,8 @@ def main():
 
     results = {}
     for subsequence in subsequences:
-        result[subsequence]
+        result[subsequence] = longest_match(dna_sequence,
+        subsequence)
 
     # TODO: Check database for matching profiles
     for i in range(len(dna_database)):
