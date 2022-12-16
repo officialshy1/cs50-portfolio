@@ -30,14 +30,16 @@ def main():
         subsequence)
 
     # TODO: Check database for matching profiles
-    for i in range(len(dna_database)):
-        matches = 0
-        for j in range(len(STR)):
-            if int(STR_match[STR[j]]) == int(dna_database[i][STR[j]]):
-                matches += 1
-                if matches == len(STR):
-                    print(dna_database[i]['name'])
-                    sys.exit(0)
+    for person in database:
+        match = 0
+        for subsequence in subsequences:
+            if int(person[subsequence]) == result[subsequence]:
+                match += 1
+
+        # if all subsequences match
+        if matches == len(subsequences):
+                    print(person["name"])
+                    return
 
     print("No Match")
 
