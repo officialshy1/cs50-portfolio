@@ -138,7 +138,7 @@ def register():
             return apology("username already exist", 400)
 
         # insert new user into database
-        db.execute("INSERT INTO users (username, hash) VALUES(?, ?)"
+        db.execute("INSERT INTO users (username, hash) VALUES(?, ?)",
                    request.form.get("username"), generate_password_hash(request.form.get("password")))
 
         # query database for new inserted user
@@ -154,7 +154,7 @@ def register():
     else:
         return render_template("register.html")
 
-    
+
 
 
 @app.route("/sell", methods=["GET", "POST"])
