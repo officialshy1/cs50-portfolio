@@ -131,7 +131,7 @@ def register():
         elif request.form.get("password") != request.form.get("confirmation"):
             return apology("passwords do not match", 400)
         # query database for username
-        rows = db.execute("SELECT " FROM users WHERE username = ?", request.form.get("username"))
+        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
 
         #ensure username does not exist
         if len(rows) != 0:
@@ -142,7 +142,7 @@ def register():
                    request.form.get("username"), generate_password_hash(request.form.get("password")))
 
         # query database for new inserted user
-        rows = db.execute("SELECT ")
+        rows = db.execute("SELECT * FROM users WHERE username = ?', request.form.get("username"))
 
     return apology("TODO")
 
