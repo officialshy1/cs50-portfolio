@@ -130,6 +130,10 @@ def register():
         #ensure password and confimration match
         elif request.form.get("password") != request.form.get("confirmation"):
             return apology("passwords do not match", 400)
+        # query database for username
+        rows = db.execute("SELECT " FROM users WHERE username = ?", request.form.get("username"))
+
+        #ensure username does not exist
     return apology("TODO")
 
 
