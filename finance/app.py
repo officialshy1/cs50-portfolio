@@ -138,7 +138,8 @@ def register():
             return apology("username already exist", 400)
 
         # insert new user into database
-        db.execute("INSERT INTO users (username, hash) VALUES(?, ?)")
+        db.execute("INSERT INTO users (username, hash) VALUES(?, ?)"
+                   request.form.get("username"), generate_password_hash(request.form.get("password")))
 
     return apology("TODO")
 
