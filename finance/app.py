@@ -142,9 +142,19 @@ def register():
                    request.form.get("username"), generate_password_hash(request.form.get("password")))
 
         # query database for new inserted user
-        rows = db.execute("SELECT * FROM users WHERE username = ?', request.form.get("username"))
+        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
 
-    return apology("TODO")
+        # remember which user logged in
+        session["user_id"] = rows[0]["id"]
+
+        #redirect user to homepage
+        return redirect("/")
+
+    #user reached route via GET
+    else:
+        return render_template("register.html")
+
+    
 
 
 @app.route("/sell", methods=["GET", "POST"])
