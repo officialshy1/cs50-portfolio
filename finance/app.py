@@ -134,6 +134,7 @@ def register():
         rows = db.execute("SELECT " FROM users WHERE username = ?", request.form.get("username"))
 
         #ensure username does not exist
+        if len
     return apology("TODO")
 
 
