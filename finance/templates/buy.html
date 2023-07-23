@@ -8,8 +8,7 @@
 
 {% block main %}
     <h1>Buy</h1>
-    <form action="{{url_for('buy') }}"
-   method="post">
+    <form action="{{ url_for('buy') }}" method="post">
        <label for="shares">Shares:</label>
        <input type="text" name="shares"
    id="shares">
