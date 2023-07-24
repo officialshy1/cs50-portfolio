@@ -43,7 +43,13 @@ def index():
     cash = db.execute("SELECT cash FROM users WHERE id = :user_id", user_id=session["user_id"])[0]["cash"]
 
     #initialize variables for total values
-    
+    total_value = cash
+    grand_total = cash
+
+    #iterate over stocks and add price and total value
+    for stock in stocks:
+        quote = lookup(stock["symbol"])
+        stock
 
 
 @app.route("/buy", methods=["GET", "POST"])
