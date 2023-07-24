@@ -49,7 +49,13 @@ def index():
     #iterate over stocks and add price and total value
     for stock in stocks:
         quote = lookup(stock["symbol"])
-        stock
+        stock["name"] = quote["name"]
+        stock["price"] = quote["price"]
+        stock["value"] = stock["price"] * stock["total_shares"]
+        total_value += stock["value"]
+        grand_total += stock["value"]
+
+    return render_template("index.html", stocks=stocks, cash=cash, total_value=total_value, grand_total=grand_total)
 
 
 @app.route("/buy", methods=["GET", "POST"])
