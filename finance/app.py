@@ -40,7 +40,10 @@ def index():
                         user_id=session["user_id"])
 
     #get user cash balance
-    cash = db.execute
+    cash = db.execute("SELECT cash FROM users WHERE id = :user_id", user_id=session["user_id"])[0]["cash"]
+
+    #initialize variables for total values
+    
 
 
 @app.route("/buy", methods=["GET", "POST"])
