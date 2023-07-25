@@ -26,3 +26,8 @@
                     <td>{{ stock.price }}</td>
                     <td>{{ stock.price * stock.total_shares }}</td>
                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="4" align="right">Cash</td>
+                <td>{{ cash }}</td>
+            </tr>
