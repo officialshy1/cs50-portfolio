@@ -1,45 +1,64 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Typing Speed Test Game | CodingNepal</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-    <div class="wrapper">
-      <input type="text" class="input-field">
-      <div class="content-box">
-        <div class="typing-text">
-          <p></p>
-        </div>
-        <div class="content">
-          <ul class="result-details">
-            <li class="time">
-              <p>Time Left:</p>
-              <span><b>60</b>s</span>
-            </li>
-            <li class="mistake">
-              <p>Mistakes:</p>
-              <span>0</span>
-            </li>
-            <li class="wpm">
-              <p>WPM:</p>
-              <span>0</span>
-            </li>
-            <li class="cpm">
-              <p>CPM:</p>
-              <span>0</span>
-            </li>
-          </ul>
-          <button>Try Again</button>
-        </div>
-      </div>
+<html>
+<head>
+    <title>Typing Speed Test</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Typing Speed Test</h1>
+        <p>Type the following sentence as fast as you can:</p>
+        <p id="sentence">The quick brown fox jumps over the lazy dog.</p>
+        <button onclick="startTest()">Start Test</button>
+        <textarea id="userTypedSentence" placeholder="Type the sentence here"></textarea>
+        <button onclick="endTest()">End Test</button>
+        <p id="result"></p>
     </div>
 
-    <script src="js/paragraphs.js"></script>
-    <script src="js/script.js"></script>
+    <script>
+        let startTime, endTime;
 
-  </body>
+        function startTest() {
+            startTime = new Date().getTime();
+            document.getElementById('userTypedSentence').disabled = false;
+            document.getElementById('userTypedSentence').focus();
+        }
+
+        function endTest() {
+            endTime = new Date().getTime();
+            document.getElementById('userTypedSentence').disabled = true;
+            calculateResult();
+        }
+
+        function calculateResult() {
+            const sentence = "The quick brown fox jumps over the lazy dog.";
+            const userTypedSentence = document.getElementById('userTypedSentence').value.trim();
+            const timeElapsedMillis = endTime - startTime;
+
+            const wordsTyped = userTypedSentence.split(/\s+/).length;
+            const charactersTyped = userTypedSentence.length;
+
+            const wordsPerMinute = (wordsTyped / (timeElapsedMillis / 1000)) * 60;
+            const accuracy = calculateAccuracy(sentence, userTypedSentence);
+
+            document.getElementById('result').innerHTML = `
+                Time taken: ${timeElapsedMillis} milliseconds<br>
+                Words per minute: ${wordsPerMinute}<br>
+                Accuracy: ${accuracy}%
+            `;
+        }
+
+        function calculateAccuracy(original, typed) {
+            let correctCharacters = 0;
+
+            for (let i = 0; i < Math.min(original.length, typed.length); i++) {
+                if (original.charAt(i) === typed.charAt(i)) {
+                    correctCharacters++;
+                }
+            }
+
+            return ((correctCharacters / original.length) * 100).toFixed(2);
+        }
+    </script>
+</body>
 </html>
