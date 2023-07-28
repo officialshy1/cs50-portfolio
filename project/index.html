@@ -1,81 +1,96 @@
-<!DOCTYPE html>
+import java.util.Scanner;
 
-<html lang="en">
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-        <link href="styles.css" rel="stylesheet">
-        <title>Interactive Homepage</title>
-  <style>
-    /* CSS styles */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      margin: 0;
-    }
-    main {
-      padding: 20px;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Homepage</h1>
-  </header>
-  <main>
-    <h2>About Me</h2>
-    <p>I'm a person who loves to learn outside of my normal and always continung to grow as a person.</p>
-    <h2>Navigation</h2>
-    <ul>
-      <li><a href="#" onclick="showContent('content1')">Sports</a></li>
-      <li><a href="#" onclick="showContent('content2')">Favorite Food </a></li>
-      <li><a href="#" onclick="showContent('content3')">Travel </a></li>
-      <li><a href="#" onclick="showContent('content4')">Goals </a></li>
-    </ul>
-    <div id="content1" class="hidden">
-      <h3>Sports</h3>
-      <p>I do love to watch almost every sport but I'd say my top one is Basketball. My favorite player, who I consider the GOAT, is LeBron James.</p>
-    </div>
-    <div id="content2" class="hidden">
-      <h3>Favorite Food</h3>
-      <p>Picking a favorite food is always hard when you're a person who loves food so my favorite genre of food would be pasta and soul food.</p>
-    </div>
-    <div id="content3" class="hidden">
-      <h3>Travel</h3>
-      <p>Being a person who loves to travel, I still have a lot more places to see but Hawaii is at the top of my list right now.</p>
-    </div>
-    <div id="content4" class="hidden">
-      <h3>Goals</h3>
-      <p>My goals in life are pretty simple, be great at whatever you do and to not be a failure in my eyes.</p>
-    </div>
-  </main>
-  <script>
-    // JavaScript code
-    function showContent(id) {
-      var content = document.getElementById(id);
-      if (content) {
-        // Hide all other content
-        var allContent = document.querySelectorAll('.hidden');
-        for (var i = 0; i < allContent.length; i++) {
-          allContent[i].style.display = 'none';
+public class TicTacToe {
+    private static char[][] board = new char[3][3];
+    private static char currentPlayer = 'X';
+
+    private static void initializeBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = ' ';
+            }
         }
-        // selected content
-        content.style.display = 'block';
-      }
     }
-  </script>
-</body>
-</html>
+
+    private static void printBoard() {
+        System.out.println("-------------");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i][j] + " | ");
+            }
+            System.out.println();
+            System.out.println("-------------");
+        }
+    }
+
+    private static boolean isBoardFull() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == ' ') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private static boolean checkWin() {
+        for (int i = 0; i < 3; i++) {
+            if (board[i][0] == currentPlayer && board[i][1] == currentPlayer && board[i][2] == currentPlayer) {
+                return true;
+            }
+            if (board[0][i] == currentPlayer && board[1][i] == currentPlayer && board[2][i] == currentPlayer) {
+                return true;
+            }
+        }
+        if (board[0][0] == currentPlayer && board[1][1] == currentPlayer && board[2][2] == currentPlayer) {
+            return true;
+        }
+        if (board[0][2] == currentPlayer && board[1][1] == currentPlayer && board[2][0] == currentPlayer) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean makeMove(int row, int col) {
+        if (row < 0 || row > 2 || col < 0 || col > 2 || board[row][col] != ' ') {
+            return false;
+        }
+        board[row][col] = currentPlayer;
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        initializeBoard();
+
+        while (true) {
+            printBoard();
+
+            if (checkWin()) {
+                System.out.println("Player " + currentPlayer + " wins!");
+                break;
+            }
+
+            if (isBoardFull()) {
+                System.out.println("It's a draw!");
+                break;
+            }
+
+            System.out.print("Player " + currentPlayer + ", enter row (0-2): ");
+            int row = scanner.nextInt();
+            System.out.print("Player " + currentPlayer + ", enter column (0-2): ");
+            int col = scanner.nextInt();
+
+            if (makeMove(row, col)) {
+                currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+            } else {
+                System.out.println("Invalid move. Try again.");
+            }
+        }
+
+        scanner.close();
+    }
+}
